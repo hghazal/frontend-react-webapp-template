@@ -20,10 +20,6 @@ import getRoutes from '../routes';
 
 
 const app = new Express();
-// Use this middleware to set up hot module reloading via webpack.
-// const compiler = webpack(webpackConfig)
-// // app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
-// app.use(webpackHotMiddleware(compiler))
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"node webpack/dev\" \"node src/server\"",
+    "dev": "concurrently \"node webpack/dev.entry\" \"node src/server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -40,6 +40,7 @@
     "sass-loader": "^3.1.2",
     "scroll-behavior": "^0.3.2",
     "serialize-javascript": "^1.1.2",
+    "serve-favicon": "^2.3.0",
     "style-loader": "^0.13.0",
     "tls": "0.0.1",
     "webpack": "^1.12.13",

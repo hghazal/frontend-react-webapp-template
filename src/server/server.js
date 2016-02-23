@@ -1,40 +1,23 @@
-import path from 'path'
-import Express from 'express'
+import Express from 'express';
+import path from 'path';
 import compression from 'compression';
 import qs from 'qs'
 
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-// import webpackConfig from '../../webpack/dev'
-
-
-
 import React from 'react'
 import ReactDOM from 'react-dom/server';
-import { renderToString } from 'react-dom/server'
+import { match } from 'react-router';
 import { Provider } from 'react-redux'
 
 import Html from '../helpers/Html';
 
-import { match } from 'react-router';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
 
 import configureStore from '../store/configureStore'
-// import App from '../containers/App'
-// import App from '../client'
+import favicon from 'serve-favicon';
 import config from '../config'
 import getRoutes from '../routes';
-// import { fetchCounter } from '../common/api/counter'
 
-import inject_tap_event_plugin from 'react-tap-event-plugin'
-
-//Needed for onTouchTap
-//Can go away when react 1.0 release
-//Check this repo:
-//https://github.com/zilverline/react-tap-event-plugin
-inject_tap_event_plugin()
 
 const app = new Express();
 // Use this middleware to set up hot module reloading via webpack.
@@ -43,6 +26,7 @@ const app = new Express();
 // app.use(webpackHotMiddleware(compiler))
 
 app.use(compression());
+app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
 
 app.use((req, res) => {
   

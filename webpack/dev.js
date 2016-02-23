@@ -26,7 +26,7 @@ config.plugins = config.plugins.concat(
 );
 
 config.entry = [
-  // 'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
+  'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
   'webpack-hot-middleware/client',
   'webpack/hot/only-dev-server',
 ].concat(config.entry)

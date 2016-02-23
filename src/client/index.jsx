@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import configureStore from '../store/configureStore';
-import { ReduxAsyncConnect } from 'redux-async-connect';
 import App from '../containers/App'
 import getRoutes from '../routes';
 import createHistory from 'react-router/lib/createMemoryHistory';
@@ -20,17 +19,10 @@ const initialState = {}
 // Create a new Redux store instance
 const store = configureStore(initialState)
 
-const component = (
-  <Router render={(props) =>
-        <ReduxAsyncConnect {...props} filter={item => !item.deferred} />
-      } history={history}>
-    {getRoutes(store)}
-  </Router>
-);
 
 ReactDOM.render(
   <Provider store={store} key="provider">
-    {component}
+    <Router history={history} children={getRoutes(store)} />
   </Provider>,
   rootElement
 );

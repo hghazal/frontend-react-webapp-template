@@ -5,12 +5,10 @@ import qs from 'qs'
 
 import React from 'react'
 import ReactDOM from 'react-dom/server';
-import { match } from 'react-router';
+import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux'
 
 import Html from '../helpers/Html';
-
-import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
 
 import configureStore from '../store/configureStore'
@@ -62,22 +60,18 @@ app.use((req, res) => {
       res.status(500);
       hydrateOnClient();
     } else if (renderProps) {
+      const component = (
+        <Provider store={store} key="provider">
+          <RouterContext {...renderProps} />
+        </Provider>
+      );
+
+      res.status(200);
+
+      global.navigator = {userAgent: req.headers['user-agent']};
       
-      // loadOnServer({...renderProps, store}).then(() => {
-        
-        const component = (
-          <Provider store={store} key="provider">
-            <ReduxAsyncConnect {...renderProps} />
-          </Provider>
-        );
-
-        res.status(200);
-
-        global.navigator = {userAgent: req.headers['user-agent']};
-        
-        res.send('<!doctype html>\n' +
-          ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>));
-      // });
+      res.send('<!doctype html>\n' +
+        ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>));
     } else {
       res.status(404).send('Not found');
     }

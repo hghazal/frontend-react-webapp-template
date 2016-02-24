@@ -8,6 +8,8 @@ import configureStore from '../store/configureStore';
 import getRoutes from '../routes';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
+import DevTools from '../containers/DevTools/DevTools';
+
 
 const history = useScroll(() => browserHistory)();
 const rootElement = document.getElementById('reactAppRoot')
@@ -19,30 +21,23 @@ const initialState = {}
 const store = configureStore(initialState)
 
 
-ReactDOM.render(
-  <Provider store={store} key="provider">
-    <Router history={history} children={getRoutes(store)} />
-  </Provider>,
-  rootElement
-);
 
-if (process.env.NODE_ENV !== 'production') {
+if (!__PROD__) {
   window.React = React; // enable debugger
-  
   if (!rootElement || !rootElement.firstChild || !rootElement.firstChild.attributes || !rootElement.firstChild.attributes['data-react-checksum']) {
   console.error('Server-side React render was discarded. Make sure that your initial render does not contain any client-side code.');
   }
 }
-//
-// if (__DEVTOOLS__ && !window.devToolsExtension) {
-//   const DevTools = require('./containers/DevTools/DevTools');
-//   ReactDOM.render(
-//     <Provider store={store} key="provider">
-//       <div>
-//         {component}
-//         <DevTools />
-//       </div>
-//     </Provider>,
-//     dest
-//   );
-// }
+
+
+const devtools = __DEVTOOLS__ ? (<DevTools/>) : null
+
+ReactDOM.render(
+  <Provider store={store} key="provider">
+    <div>
+      <Router history={history} children={getRoutes(store)} />
+      {devtools}
+    </div>
+  </Provider>,
+  rootElement
+);

@@ -49,7 +49,9 @@ config.globals = {
   '__TEST__'        : config.env === 'test',
   // DISABLE SERVER SIDE RENDERING FOR ERROR DEBUGGING
   '__DISABLE_SSR__' : false,
-  '__BASENAME__'    : JSON.stringify(process.env.BASENAME || '')
+  // ENABLE/DISABLE REDUX DEV TOOLS
+  '__DEVTOOLS__'    : config.env === 'development',
+  '__BASENAME__'    : JSON.stringify(process.env.BASENAME || ''),
 }
 
 // ------------------------------------

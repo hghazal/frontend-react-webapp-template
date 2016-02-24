@@ -15,8 +15,11 @@ import configureStore from '../store/configureStore'
 import favicon from 'serve-favicon';
 import config from '../../config';
 import getRoutes from '../routes';
+import DevTools from '../containers/DevTools/DevTools';
 
-const {__DEV__, __DISABLE_SSR__ } = config.globals
+// assign the global variables from the config file.
+Object.assign(global, config.globals)
+
 const app = new Express();
 
 app.use(compression());
@@ -60,9 +63,13 @@ app.use((req, res) => {
       res.status(500);
       hydrateOnClient();
     } else if (renderProps) {
+      const devtools = __DEVTOOLS__ ? (<DevTools/>) : null
       const component = (
         <Provider store={store} key="provider">
-          <RouterContext {...renderProps} />
+          <div>
+            <RouterContext {...renderProps} />
+            {devtools}
+          </div>
         </Provider>
       );
 

@@ -10,7 +10,7 @@ var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./w
 
 const debug = _debug('app:webpack-base-config')
 const paths = config.utils_paths
-const {__DEV__, __PROD__, __TEST__} = config.globals
+Object.assign(global, config.globals);
 
 debug('Create base webpack configuration.')
 const webpackBaseConfig = {
@@ -149,6 +149,5 @@ if (!__TEST__) {
     names: ['vendor']
   }))
 }
-
 
 export default webpackBaseConfig

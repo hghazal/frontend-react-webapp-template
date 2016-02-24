@@ -1,4 +1,4 @@
-import Express from 'express';
+import express from 'express';
 import path from 'path';
 import compression from 'compression';
 import qs from 'qs'
@@ -20,10 +20,15 @@ import DevTools from '../containers/DevTools/DevTools';
 // assign the global variables from the config file.
 Object.assign(global, config.globals)
 
-const app = new Express();
+const paths = config.utils_paths
+const app = new express();
 
-app.use(compression());
 app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
+app.use(compression());
+
+if (__PROD__) {
+  app.use('/assets', express.static(paths.dist()));
+}
 
 app.use((req, res) => {
   

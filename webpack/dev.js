@@ -4,7 +4,8 @@ import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
 
 import webpackBaseConfig from './webpack-base-config';
 import config from '../config';
-const {__DEV__, __PROD__, __DEVTOOLS__} = config.globals
+
+Object.assign(global, config.globals);
 
 
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));

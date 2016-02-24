@@ -3,14 +3,16 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BundleTracker from 'webpack-bundle-tracker';
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
-import config from '../config';
+import _debug from 'debug'
 
+import config from '../config';
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
+const debug = _debug('app:webpack-base-config')
 const paths = config.utils_paths
 const {__DEV__, __PROD__, __TEST__} = config.globals
 
-
+debug('Create base webpack configuration.')
 const webpackBaseConfig = {
   context: config.path_base,
   entry: [
@@ -26,11 +28,6 @@ const webpackBaseConfig = {
     // webserver path for static files
     publicPath: '/assets/'
   },
-  plugins: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
   module: {
     loaders: [
       {
@@ -104,5 +101,54 @@ const webpackBaseConfig = {
     extensions: ['', '.js', '.jsx']
   }
 }
+
+// -----------------------------------------------------------------------------
+// Entry Points
+// -----------------------------------------------------------------------------
+
+if (__DEV__) {
+  webpackBaseConfig.entry = [
+    `webpack-hot-middleware/client?path=http://${config.server_host}:${config.server_port+1}/__webpack_hmr`,
+    'webpack/hot/only-dev-server',
+  ].concat(webpackBaseConfig.entry)
+}
+
+// -----------------------------------------------------------------------------
+// Plugins
+// -----------------------------------------------------------------------------
+webpackBaseConfig.plugins = [
+  new webpack.DefinePlugin(config.globals),
+  new webpack.optimize.DedupePlugin(),
+  new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.NoErrorsPlugin()
+];
+
+if (__DEV__) {
+  debug('Enable plugins for live development (HMR, NoErrors).')
+  webpackBaseConfig.plugins.push(
+    // new webpack.IgnorePlugin(/webpack-stats\.json$/),
+    new webpack.HotModuleReplacementPlugin(),
+    webpackIsomorphicToolsPlugin.development()
+  )
+} else if (__PROD__) {
+  debug('Enable plugins for production (OccurenceOrder, Dedupe & UglifyJS).')
+  webpackBaseConfig.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        unused: true,
+        dead_code: true,
+        warnings: false
+      }
+    }),
+    webpackIsomorphicToolsPlugin.development(false)
+  )
+}
+// Don't split bundles during testing, since we only want import one bundle
+if (!__TEST__) {
+  webpackBaseConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+    names: ['vendor']
+  }))
+}
+
 
 export default webpackBaseConfig

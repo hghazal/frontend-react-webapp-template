@@ -11,27 +11,8 @@ var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./w
 var host = config.server_host;
 var port = config.server_port + 1;
 const webpackConfig = webpackBaseConfig;//Object.clone(webpackBaseConfig);
+
 webpackConfig.devltool = 'inline-source-map';
-
-webpackConfig.plugins = webpackConfig.plugins.concat(
-  new webpack.IgnorePlugin(/webpack-stats\.json$/),
-  new webpack.DefinePlugin({
-    __CLIENT__: true,
-    __SERVER__: false,
-    __DEVELOPMENT__: true,
-    __DEVTOOLS__: __DEVTOOLS__  // <-------- DISABLE redux-devtools HERE
-  }),
-  // faster code reload on changes
-  new webpack.HotModuleReplacementPlugin(),
-  webpackIsomorphicToolsPlugin.development()
-);
-
-webpackConfig.entry = [
-  `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
-  'webpack-hot-middleware/client',
-  'webpack/hot/only-dev-server',
-].concat(webpackConfig.entry)
-
 webpackConfig.output.publicPath = `//${host}:${port}${webpackConfig.output.publicPath}`
 
 var serverOptions = {

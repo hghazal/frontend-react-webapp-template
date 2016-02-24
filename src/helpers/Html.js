@@ -50,7 +50,9 @@ export default class Html extends Component {
         <body>
           <div id="reactAppRoot" dangerouslySetInnerHTML={{__html: content}}/>
           <script dangerouslySetInnerHTML={{__html: `window.__data=${serialize(store.getState())};`}} charSet="UTF-8"/>
-          <script src={assets.javascript.main} charSet="UTF-8"/>
+          {Object.keys(assets.javascript).map((script, key) =>
+            <script key={key} src={assets.javascript[script]} charSet="UTF-8"/>
+          )}
         </body>
       </html>
     );

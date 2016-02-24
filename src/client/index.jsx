@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import configureStore from '../store/configureStore';
-import Root from '../containers'
 import getRoutes from '../routes';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';

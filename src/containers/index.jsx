@@ -1,2 +1,2 @@
-export App from './App';
+export Root from './Root';
 export Home from './Home';

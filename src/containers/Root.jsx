@@ -13,11 +13,13 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(CounterActions, dispatch)
 }
 
-class App extends React.Component {
+class Root extends React.Component {
   render() {
     return (
-      <h1>Hello World!</h1>
+      <div>
+        <h1>Hello World!</h1>
+      </div>
     )
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Root)

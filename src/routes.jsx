@@ -3,14 +3,14 @@ import {IndexRoute, Route} from 'react-router';
 // import { isLoaded as isAuthLoaded, load as loadAuth } from 'redux/modules/auth';
 
 import {
-  App,
+  Root,
   Home,
 } from '../src/containers';
 
 
 export default (store) => {
   return (
-    <Route path="/" component={App}>
+    <Route path="/" component={Root}>
       <IndexRoute component={Home} />
     </Route>
   );

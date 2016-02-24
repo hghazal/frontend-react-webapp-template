@@ -1,21 +1,14 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var BundleTracker = require('webpack-bundle-tracker');
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+import path from 'path';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import BundleTracker from 'webpack-bundle-tracker';
+import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
+import config from '../config';
+
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
-
-var rootFolder = path.resolve(__dirname, '..')
-var pathConfig = {
-  root: rootFolder,
-  src: path.resolve(rootFolder, 'src'),
-  dist: path.resolve(rootFolder, 'dist/assets')
-}
-
 module.exports = {
-  pathConfig: pathConfig,
-  context: pathConfig.root,
+  context: config.path_base,
   entry: [
     './src/client'
   ],
@@ -25,7 +18,7 @@ module.exports = {
     // file name pattern for entry scripts
     filename: path.join('js', '[name].[hash].js'),
     // filesystem path for static files
-    path: pathConfig.dist,
+    path: path.join(config.path_base, config.dir_dist),
     // webserver path for static files
     publicPath: '/assets/'
   },
@@ -36,15 +29,39 @@ module.exports = {
   ],
   module: {
     loaders: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   loader: 'babel',
-      //   exclude: /node_modules/,
-      //   include: pathConfig.src,
-      //   query: {
-      //     presets: [ 'react-hmre' ]
-      //   }
-      // },
+      {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        include: path.join(config.path_base, config.dir_src),
+        query: {
+          cacheDirectory: true,
+          plugins: ['transform-runtime'],
+          presets: ['es2015', 'react', 'stage-0'],
+          env: {
+            development: {
+              plugins: [
+                ['react-transform', {
+                  transforms: [{
+                    transform: 'react-transform-hmr',
+                    imports: ['react'],
+                    locals: ['module']
+                  }, {
+                    transform: 'react-transform-catch-errors',
+                    imports: ['react', 'redbox-react']
+                  }]
+                }]
+              ]
+            },
+            production: {
+              plugins: [
+                'transform-react-remove-prop-types',
+                'transform-react-constant-elements'
+              ]
+            }
+          }
+        }
+      },
       {
         exclude: /node_modules/,
         loader: 'json-loader',
@@ -75,10 +92,10 @@ module.exports = {
   progress: true,
   resolve: {
     fallback: [
-      path.resolve(__dirname, '..'),
-      path.resolve(__dirname, '..', 'src'),
-      path.resolve(__dirname, '..', 'node_modules'),
-      path.resolve(__dirname, '..', 'static')
+      config.path_base,
+      path.join(config.path_base, config.dir_src),
+      // path.resolve(config.path_base, 'node_modules'),
+      // path.resolve(config.path_base, 'static')
     ],
     extensions: ['', '.js', '.jsx']
   }

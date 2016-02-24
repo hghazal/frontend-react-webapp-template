@@ -13,7 +13,7 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 
 import configureStore from '../store/configureStore'
 import favicon from 'serve-favicon';
-import config from '../config'
+import config from '../../config';
 import getRoutes from '../routes';
 
 
@@ -24,7 +24,7 @@ app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
 
 app.use((req, res) => {
   
-  if (__DEVELOPMENT__) {
+  if (config.globals.__DEV__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
@@ -47,7 +47,7 @@ app.use((req, res) => {
       ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store}/>));
   }
   
-  if (__DISABLE_SSR__) {
+  if (config.globals.__DISABLE_SSR__) {
     hydrateOnClient();
     return;
   }
@@ -78,10 +78,10 @@ app.use((req, res) => {
   });
 });
 
-app.listen(config.port, (error) => {
+app.listen(config.server_port, (error) => {
   if (error) {
     console.error(error)
   } else {
-    console.info('==> 🌎  Open brower to http://%s:%s/.', config.host, config.port)
+    console.info(`==> 🌎  Open brower to http://${config.server_host}:${config.server_port}/.`)
   }
 })

@@ -1,62 +1,50 @@
-var Express = require('express');
-var webpack = require('webpack');
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+import Express from 'express';
+import webpack from 'webpack';
+import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
+
+import webpackBaseConfig from './webpack-base-config';
+import config from '../config';
+
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+var host = config.server_host;
+var port = config.server_port + 1;
+const webpackConfig = webpackBaseConfig;//Object.clone(webpackBaseConfig);
+webpackConfig.devltool = 'inline-source-map';
 
-var webpackBaseConfig = require('./webpack-base-config');
-var app_config = require('../src/config');
-
-var host = webpackBaseConfig.host || 'localhost';
-var port = (webpackBaseConfig.port + 1) || 3001;
-const config = webpackBaseConfig;//Object.clone(webpackBaseConfig);
-
-config.devltool = 'inline-source-map';
-
-config.plugins = config.plugins.concat(
+webpackConfig.plugins = webpackConfig.plugins.concat(
   new webpack.IgnorePlugin(/webpack-stats\.json$/),
   new webpack.DefinePlugin({
     __CLIENT__: true,
     __SERVER__: false,
     __DEVELOPMENT__: true,
-    __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
+    __DEVTOOLS__: config.globals.__DEVTOOLS__  // <-------- DISABLE redux-devtools HERE
   }),
   // faster code reload on changes
   new webpack.HotModuleReplacementPlugin(),
   webpackIsomorphicToolsPlugin.development()
 );
 
-config.entry = [
-  'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/__webpack_hmr',
+webpackConfig.entry = [
+  `webpack-hot-middleware/client?path=http://${host}:${port}/__webpack_hmr`,
   'webpack-hot-middleware/client',
   'webpack/hot/only-dev-server',
-].concat(config.entry)
+].concat(webpackConfig.entry)
 
-config.module.loaders = [
-  {
-    test: /\.(js|jsx)$/,
-    loader: 'babel-loader',
-    exclude: /node_modules/,
-    include: config.pathConfig.src,
-    query: {         presets: [ 'react-hmre' ]}
-    
-  }
-].concat(config.module.loaders);
-
-config.output.publicPath = '//' + host + ':' + port + config.output.publicPath
+webpackConfig.output.publicPath = `//${host}:${port}${webpackConfig.output.publicPath}`
 
 var serverOptions = {
-  contentBase: 'http://' + host + ':' + port,
+  contentBase: `http://${host}:${port}`,
   quiet: true,
   noInfo: true,
   hot: true,
   inline: true,
   lazy: false,
-  publicPath: config.output.publicPath,
+  publicPath: webpackConfig.output.publicPath,
   headers: {'Access-Control-Allow-Origin': '*'},
   stats: {colors: true}
 };
 
-var compiler = webpack(config);
+var compiler = webpack(webpackConfig);
 var app = new Express();
 
 app.use(require('webpack-dev-middleware')(compiler, serverOptions));
@@ -68,9 +56,5 @@ app.listen(port, function onAppListening(err) {
     console.error(err.stack || error);
     throw error
   }
-  console.info('==> 🚧  Webpack development server listening on port %s', port);
+  console.info(`==> 🚧  Webpack development server listening on port ${port}`);
 });
-
-// webpackIsomorphicToolsPlugin.development(true).server(config.pathConfig.root, function() {
-//   require('./src/server');
-// });

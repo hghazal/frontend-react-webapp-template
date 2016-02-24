@@ -15,14 +15,13 @@ const enhancer = compose(
   // persistState(getDebugSessionKey()),
   applyMiddleware(thunk)
 );
-//
+
 // function getDebugSessionKey() {
 //   // You can write custom logic here!
 //   // By default we try to read the key from ?debug_session=<key> in the address bar
 //   const matches = window.location.href.match(/[?&]debug_session=([^&#]+)\b/);
 //   return (matches && matches.length > 0)? matches[1] : null;
 // }
-
 
 export default function configureStore(initialState) {
   let store = null;
@@ -31,27 +30,20 @@ export default function configureStore(initialState) {
       rootReducer,
       initialState,
       enhancer
-    )
+    );
   } else {
     store = createStore( rootReducer,
       initialState,
       applyMiddleware(thunk)
-    )
+    );
   }
 
   // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
   if (module.hot) {
     module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers')/*.default if you use Babel 6+ */)
+      store.replaceReducer(require('../reducers') /* .default if you use Babel 6+ */)
     );
   }
-  // if (module.hot) {
-  //   // Enable Webpack hot module replacement for reducers
-  //   module.hot.accept('../reducers', () => {
-  //     const nextRootReducer = require('../reducers').default
-  //     store.replaceReducer(nextRootReducer)
-  //   })
-  // }
 
-  return store
+  return store;
 }

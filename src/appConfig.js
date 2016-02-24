@@ -16,9 +16,8 @@ module.exports = Object.assign({
         // {property: 'og:site', content: '@erikras'},
         // {property: 'og:creator', content: '@erikras'},
         // {property: 'og:image:width', content: '200'},
-        // {property: 'og:image:height', content: '200'}
-      ]
-    }
+        // {property: 'og:image:height', content: '200'},
+      ],
+    },
   },
-
 });

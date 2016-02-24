@@ -1,0 +1,88 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "sorting"
+  ],
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": false,
+    "jsx": true,
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": false,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jasmine": true
+  },
+  "rules": {
+    "brace-style": [2,
+      "1tbs", {
+        "allowSingleLine": true
+    }],
+    "camelcase": 2,
+    "comma-dangle": [2, "always-multiline"],
+    "comma-spacing": [2, {
+      "before": false,
+      "after": true
+    }],
+    "dot-notation": 2,
+    "eol-last": 0,
+    "eqeqeq": 2,
+    "indent": [2, 2],
+    "jsx-quotes": [2, "prefer-single"],
+    "new-cap": 0,
+    "no-console": 0,
+    "no-debugger": 0,
+    "no-extra-semi": 2,
+    "no-mixed-requires": 2,
+    "no-multiple-empty-lines": [2, {"max": 2}],
+    "no-shadow": 2,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": 2,
+    "no-var": 2,
+    "object-curly-spacing": [2, "always"],
+    "padded-blocks": [2, "never"],
+    "quotes": [2, "single"],
+    "radix": 2,
+    "react/display-name": 2,
+    "react/jsx-boolean-value": 2,
+    "react/jsx-no-undef": 2,
+    "react/jsx-sort-prop-types": 2,
+    "react/jsx-sort-props": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/no-did-mount-set-state": 2,
+    "react/no-did-update-set-state": 2,
+    "react/no-unknown-property": 2,
+    "react/prop-types": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/self-closing-comp": 2,
+    "react/wrap-multilines": 2,
+    "semi": [2, "always"],
+    # "sorting/sort-object-props": [2, {
+    #   "ignoreCase": false,
+    #   "ignoreMethods": false
+    # }],
+    "keyword-spacing": 2,
+    "space-before-blocks": 2,
+    "space-before-function-paren": [2, "never"],
+    "space-infix-ops": 2,
+    "spaced-comment": 2,
+    "strict": [2, "never"]
+  }
+}

@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux'
-import {  routeReducer } from 'react-router-redux'
-import counter from './counter'
+import { combineReducers } from 'redux';
+import {  routeReducer } from 'react-router-redux';
+import counter from './counter';
 
 
 const rootReducer = combineReducers({
@@ -8,4 +8,4 @@ const rootReducer = combineReducers({
   counter,
 });
 
-export default rootReducer
+export default rootReducer;

@@ -16,7 +16,7 @@ import favicon from 'serve-favicon';
 import config from '../../config';
 import getRoutes from '../routes';
 
-
+const {__DEV__, __DISABLE_SSR__ } = config.globals
 const app = new Express();
 
 app.use(compression());
@@ -24,7 +24,7 @@ app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
 
 app.use((req, res) => {
   
-  if (config.globals.__DEV__) {
+  if (__DEV__) {
     // Do not cache webpack stats: the script file would change since
     // hot module replacement is enabled in the development env
     webpackIsomorphicTools.refresh();
@@ -47,7 +47,7 @@ app.use((req, res) => {
       ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} store={store}/>));
   }
   
-  if (config.globals.__DISABLE_SSR__) {
+  if (__DISABLE_SSR__) {
     hydrateOnClient();
     return;
   }

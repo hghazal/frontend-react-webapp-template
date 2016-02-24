@@ -7,10 +7,14 @@ import config from '../config';
 
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
-module.exports = {
+const paths = config.utils_paths
+const {__DEV__, __PROD__, __TEST__} = config.globals
+
+
+const webpackBaseConfig = {
   context: config.path_base,
   entry: [
-    './src/client'
+    paths.src('client')
   ],
   output: {
     // file name pattern for chunk scripts
@@ -18,7 +22,7 @@ module.exports = {
     // file name pattern for entry scripts
     filename: path.join('js', '[name].[hash].js'),
     // filesystem path for static files
-    path: path.join(config.path_base, config.dir_dist),
+    path: paths.dist(),
     // webserver path for static files
     publicPath: '/assets/'
   },
@@ -33,7 +37,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        include: path.join(config.path_base, config.dir_src),
+        include: paths.src(),
         query: {
           cacheDirectory: true,
           plugins: ['transform-runtime'],
@@ -72,12 +76,12 @@ module.exports = {
         test: /\.scss$/
       },
       {
-        loader: 'file?context=' + path.join (__dirname, '..', 'static') + '&hash=sha512&digest=hex&name=[path][name].[ext]',
+        loader: 'file?context=' + paths.base('static') + '&hash=sha512&digest=hex&name=[path][name].[ext]',
         test:  /\.(woff|woff2|ttf|eot|svg)$/i
       },
       {
         loaders: [
-            'file?context=' + path.join (__dirname, '..', 'static') + '&hash=sha512&digest=hex&name=[path][name]-[hash].[ext]',
+            'file?context=' + paths.base('static') + '&hash=sha512&digest=hex&name=[path][name]-[hash].[ext]',
             'image-webpack?bypassOnDebug&optimizationLevel=3&interlaced=false'
         ],
         test: /\.(jpe?g|png|gif)$/i
@@ -93,10 +97,12 @@ module.exports = {
   resolve: {
     fallback: [
       config.path_base,
-      path.join(config.path_base, config.dir_src),
+      paths.src(),
       // path.resolve(config.path_base, 'node_modules'),
       // path.resolve(config.path_base, 'static')
     ],
     extensions: ['', '.js', '.jsx']
   }
 }
+
+export default webpackBaseConfig

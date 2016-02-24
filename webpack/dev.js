@@ -4,6 +4,8 @@ import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
 
 import webpackBaseConfig from './webpack-base-config';
 import config from '../config';
+const {__DEV__, __PROD__, __DEVTOOLS__} = config.globals
+
 
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 var host = config.server_host;
@@ -17,7 +19,7 @@ webpackConfig.plugins = webpackConfig.plugins.concat(
     __CLIENT__: true,
     __SERVER__: false,
     __DEVELOPMENT__: true,
-    __DEVTOOLS__: config.globals.__DEVTOOLS__  // <-------- DISABLE redux-devtools HERE
+    __DEVTOOLS__: __DEVTOOLS__  // <-------- DISABLE redux-devtools HERE
   }),
   // faster code reload on changes
   new webpack.HotModuleReplacementPlugin(),

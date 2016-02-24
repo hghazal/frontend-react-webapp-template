@@ -63,7 +63,7 @@ config.utils_paths = (() => {
 
   return {
     base   : base,
-    client : base.bind(null, config.dir_client),
+    src    : base.bind(null, config.dir_src),
     dist   : base.bind(null, config.dir_dist)
   }
 })()

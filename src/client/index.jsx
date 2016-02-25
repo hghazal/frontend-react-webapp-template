@@ -8,7 +8,7 @@ import configureStore from '../store/configureStore';
 import getRoutes from '../routes';
 import createHistory from 'react-router/lib/createMemoryHistory';
 import useScroll from 'scroll-behavior/lib/useStandardScroll';
-import DevTools from '../containers/DevTools/DevTools';
+import DevTools from '../containers/dev-tools/dev-tools';
 
 
 const history = useScroll(() => browserHistory)();

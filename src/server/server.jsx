@@ -15,7 +15,7 @@ import configureStore from '../store/configureStore'
 import favicon from 'serve-favicon';
 import config from '../../config';
 import getRoutes from '../routes';
-import DevTools from '../containers/DevTools/DevTools';
+import DevTools from '../containers/dev-tools/dev-tools';
 
 // assign the global variables from the config file.
 Object.assign(global, config.globals)

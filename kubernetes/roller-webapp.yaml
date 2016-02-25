@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: roller-webapp-controller
+spec:
+  replicas: 2
+  selector:
+    app: roller-webapp
+    version: VERSION
+  template:
+    metadata:
+      name: roller-webapp
+      labels:
+        app: roller-webapp
+        version: VERSION
+    spec:
+      containers:
+      - name: react
+        image: us.gcr.io/roller-io/roller-webapp:latest
+        ports:
+        - containerPort: 3000
+        command:
+          - "bash"
+          - "-c"
+        args:
+          - "nginx && npm start"
+        env:
+        - PORT: 3300
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 75m
+            memory: 64Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: roller-webapp-service
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: roller-webapp

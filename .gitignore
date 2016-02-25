@@ -6,3 +6,5 @@ webpack-assets.json
 webpack-stats.json
 npm-debug.log
 .eslintcache
+deploy-rc.yaml
+deploy-rc.yaml.bak

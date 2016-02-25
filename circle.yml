@@ -1,0 +1,25 @@
+machine:
+  node:
+    version: 5.7
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - ~/google-cloud-sdk
+  pre:
+    - npm install
+    
+test:
+  override:
+    - npm run test
+  post:
+    - npm run lint
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - ./deploy/install_gcloud.sh
+      - source $HOME/google-cloud-sdk/path.bash.inc && ./deploy/publish.sh
+      - source $HOME/google-cloud-sdk/path.bash.inc && ./deploy/rolling-update.sh

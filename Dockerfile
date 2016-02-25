@@ -12,7 +12,7 @@ RUN     mkdir -p $PACKAGE_PATH
 WORKDIR $PACKAGE_PATH
 
 COPY    . $PACKAGE_PATH
-RUN     npm install
+RUN     npm install --production
 RUN     npm run build
 RUN     rm -rf /etc/nginx/sites-enabled/*
 RUN     ln -s $PACKAGE_PATH/nginx/default.conf /etc/nginx/sites-enabled/

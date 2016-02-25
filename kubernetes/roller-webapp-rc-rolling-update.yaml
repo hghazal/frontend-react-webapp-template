@@ -24,9 +24,10 @@ spec:
           - "bash"
           - "-c"
         args:
-          - "nginx && npm run dockerProd"
+          - "nginx && npm start"
         env:
-        - PORT: 3300
+        - name: "PORT"
+          value: "3300"
         resources:
           limits:
             cpu: 250m

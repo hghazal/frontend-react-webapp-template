@@ -20,7 +20,7 @@ import DevTools from '../containers/DevTools/DevTools';
 // assign the global variables from the config file.
 Object.assign(global, config.globals)
 
-const paths = config.utils_paths
+const paths = config.utilsPaths
 const app = new express();
 
 app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
@@ -90,10 +90,10 @@ app.use((req, res) => {
   });
 });
 
-app.listen(config.server_port, (error) => {
+app.listen(config.serverPort, (error) => {
   if (error) {
     console.error(error)
   } else {
-    console.info(`==> 🌎  Open brower to http://${config.server_host}:${config.server_port}/.`)
+    console.info(`==> 🌎  Open brower to http://${config.serverHost}:${config.serverPort}/.`)
   }
 })

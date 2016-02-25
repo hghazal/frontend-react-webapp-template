@@ -3,18 +3,19 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BundleTracker from 'webpack-bundle-tracker';
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin';
+import WebpackCleanupPlugin from 'webpack-cleanup-plugin'
 import _debug from 'debug'
 
 import config from '../config';
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
 const debug = _debug('app:webpack-base-config')
-const paths = config.utils_paths
+const paths = config.utilsPaths
 Object.assign(global, config.globals);
 
 debug('Create base webpack configuration.')
 const webpackBaseConfig = {
-  context: config.path_base,
+  context: config.pathBase,
   entry: [
     paths.src('client')
   ],
@@ -93,10 +94,10 @@ const webpackBaseConfig = {
   progress: true,
   resolve: {
     fallback: [
-      config.path_base,
+      config.pathBase,
       paths.src(),
-      // path.resolve(config.path_base, 'node_modules'),
-      // path.resolve(config.path_base, 'static')
+      // path.resolve(config.pathBase, 'node_modules'),
+      // path.resolve(config.pathBase, 'static')
     ],
     extensions: ['', '.js', '.jsx']
   }
@@ -108,7 +109,7 @@ const webpackBaseConfig = {
 
 if (__DEV__) {
   webpackBaseConfig.entry = [
-    `webpack-hot-middleware/client?path=http://${config.server_host}:${config.server_port+1}/__webpack_hmr`,
+    `webpack-hot-middleware/client?path=http://${config.serverHost}:${config.serverPort+1}/__webpack_hmr`,
     'webpack/hot/only-dev-server',
   ].concat(webpackBaseConfig.entry)
 }
@@ -133,6 +134,7 @@ if (__DEV__) {
 } else if (__PROD__) {
   debug('Enable plugins for production (OccurenceOrder, Dedupe & UglifyJS).')
   webpackBaseConfig.plugins.push(
+    new WebpackCleanupPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         unused: true,

@@ -9,8 +9,8 @@ Object.assign(global, config.globals);
 
 
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
-var host = config.server_host;
-var port = config.server_port + 1;
+var host = config.serverHost;
+var port = config.serverPort + 1;
 const webpackConfig = webpackBaseConfig;//Object.clone(webpackBaseConfig);
 
 webpackConfig.devltool = 'inline-source-map';
@@ -18,14 +18,14 @@ webpackConfig.output.publicPath = `//${host}:${port}${webpackConfig.output.publi
 
 var serverOptions = {
   contentBase: `http://${host}:${port}`,
-  quiet: true,
-  noInfo: true,
+  quiet: config.compiler.quiet,
+  noInfo: config.compiler.quiet,
   hot: true,
-  inline: true,
   lazy: false,
+  inline: true,
   publicPath: webpackConfig.output.publicPath,
   headers: {'Access-Control-Allow-Origin': '*'},
-  stats: {colors: true}
+  stats: config.compiler.stats
 };
 
 var compiler = webpack(webpackConfig);

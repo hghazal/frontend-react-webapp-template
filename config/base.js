@@ -2,10 +2,6 @@
 import _debug from 'debug';
 import path from 'path';
 
-// config.path_base
-// path.join(config.path_base, config.dir_src)
-// path.join(config.path_base, config.dir_dist)
-
 const debug = _debug('app:config:_base');
 const config = {
   env : process.env.NODE_ENV || 'development',
@@ -13,18 +9,38 @@ const config = {
   // ----------------------------------
   // Project Structure
   // ----------------------------------
-  path_base  : path.resolve(__dirname, '..'),
-  dir_src    : 'src',
-  dir_dist   : 'dist',
-  dir_test   : 'tests',
+  pathBase  : path.resolve(__dirname, '..'),
+  dirSrc    : 'src',
+  dirDist   : 'dist',
+  dirTest   : 'tests',
   
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host : process.env.HOST || 'localhost',
-  server_port : parseInt(process.env.PORT, 10) || 3000,
-
-}
+  serverHost : process.env.HOST || 'localhost',
+  serverPort : parseInt(process.env.PORT, 10) || 3000,
+  
+  // ----------------------------------
+  // Compiler Configuration
+  // ----------------------------------
+  compiler: {
+    quiet                     : true,
+    hashType                  : 'hash',
+    stats: {
+      // chunks : false,
+      // chunkModules : false,
+      colors : true,
+    },
+  },
+  compilerVendor : [
+    'history',
+    'react',
+    'react-redux',
+    'react-router',
+    'react-router-redux',
+    'redux',
+  ],
+};
 
 /************************************************
 -------------------------------------------------
@@ -41,7 +57,7 @@ Edit at Your Own Risk
 // N.B.: globals added here must _also_ be added to .eslintrc
 config.globals = {
   'process.env'  : {
-    'NODE_ENV' : JSON.stringify(config.env)
+    'NODE_ENV' : JSON.stringify(config.env),
   },
   'NODE_ENV'        : config.env,
   '__DEV__'         : config.env === 'development',
@@ -52,22 +68,39 @@ config.globals = {
   // ENABLE/DISABLE REDUX DEV TOOLS
   '__DEVTOOLS__'    : config.env === 'development',
   '__BASENAME__'    : JSON.stringify(process.env.BASENAME || ''),
-}
+};
+
+// ------------------------------------
+// Validate Vendor Dependencies
+// ------------------------------------
+const pkg = require('../package.json');
+
+config.compilerVendor = config.compilerVendor
+  .filter((dep) => {
+    if (pkg.dependencies[dep]) return true;
+
+    debug(
+      `Package "${dep}" was not found as an npm dependency in package.json; ` +
+      `it won't be included in the webpack vendor bundle.
+       Consider removing it from vendor_dependencies in ~/config/index.js`
+    );
+  });
+
 
 // ------------------------------------
 // Utilities
 // ------------------------------------
-config.utils_paths = (() => {
-  const resolve = path.resolve
+config.utilsPaths = (() => {
+  const resolve = path.resolve;
 
   const base = (...args) =>
-    resolve.apply(resolve, [config.path_base, ...args])
+    resolve.apply(resolve, [config.pathBase, ...args]);
 
   return {
     base   : base,
-    src    : base.bind(null, config.dir_src),
-    dist   : base.bind(null, config.dir_dist)
-  }
-})()
+    dist   : base.bind(null, config.dirDist),
+    src    : base.bind(null, config.dirSrc),
+  };
+})();
 
 export default config;

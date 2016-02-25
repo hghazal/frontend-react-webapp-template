@@ -16,6 +16,6 @@ if (config.globals.__DEV__) {
 const WebpackIsomorphicTools = require('webpack-isomorphic-tools');
 global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../../webpack/webpack-isomorphic-tools'))
   .development(config.globals.__DEV__)
-  .server(config.path_base, function() {
+  .server(config.pathBase, function() {
     require('./server');
   });

@@ -8,7 +8,7 @@ import sinon from 'sinon';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-import Root from 'src/containers/Root.jsx';
+import Root from 'src/containers/root.jsx';
 
 function once(fn) {
   let returnValue, called = false;

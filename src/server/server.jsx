@@ -8,10 +8,10 @@ import ReactDOM from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux'
 
-import Html from '../helpers/Html';
+import Html from '../helpers/html';
 import createHistory from 'react-router/lib/createMemoryHistory';
 
-import configureStore from '../store/configureStore'
+import configureStore from '../store/configure-store'
 import favicon from 'serve-favicon';
 import config from '../../config';
 import getRoutes from '../routes';

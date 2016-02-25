@@ -24,17 +24,20 @@
 ## Local Dev workflow
 - Clone the repo locally
 - Install dependencies
-  ```bash
-  $ npm install
-  ```
+```bash
+$ npm install
+```
+
 - Run the app server
 ```bash
 $ npm run dev
 ```
+
 - Write tests and run tests before pushing
 ```bash
 $ npm run test
 ```
+
 - Ensure that you're following the coding guidelines
 ```bash
 $ npm run lint

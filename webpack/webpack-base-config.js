@@ -71,15 +71,15 @@ const webpackBaseConfig = {
       },
       {
         loader: ExtractTextPlugin.extract('css!sass'),
-        test: /\.scss$/
+        test: /\.scss$/i
       },
       {
         loader: 'file?context=' + paths.base('assets') + '&hash=sha512&digest=hex&name=fonts/[name].[ext]',
         test:  /\.(woff|woff2|ttf|eot|svg)$/i
       },
       {
-        loader: 'url-loader?limit=10240',
-        test: webpackIsomorphicToolsPlugin.regular_expression('images')
+        loader: 'url-loader?limit=10240&name=images/[name].[hash].[ext]',
+        test: /\.(jpe?g|png|gif|svg)$/i
       }
     ]
   },

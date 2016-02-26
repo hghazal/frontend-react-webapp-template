@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Roller's frontend",
   "scripts": {
+    "clean": "rm -rf dist && rm -rf webpack-stats.json && rm -rf deploy-rc.yaml*",
     "dev": "better-npm-run dev",
     "start": "better-npm-run prod",
     "build": "better-npm-run build",
@@ -25,7 +26,7 @@
       }
     },
     "build": {
-      "command": "webpack --verbose --colors --display-error-details --config webpack/prod.entry.js",
+      "command": "npm run clean && webpack --verbose --colors --display-error-details --config webpack/prod.entry.js",
       "env": {
         "NODE_ENV": "production"
       }

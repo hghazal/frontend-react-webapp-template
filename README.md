@@ -59,3 +59,12 @@ an optional argument that lets you add a tag the Kubernetes controller's name. I
 ```bash
 $ ./deploy/rolling-update.sh [label]
 ```
+
+## Current Issues:
+- Releasing code in a rolling update on Kubernetes might break the user experience. Consider
+the situation when a user sends a request to load a page and that page requests another resource.
+Kubernetes Replication Controller (RC) will use round robin to route the traffic, thus requesting
+a resource that is either no longer on the new docker image or hasn't made it to the new docker
+instance.
+
+  **Potential Solution**: Use version numbers in the url of the resource and distribute the assets on a CDN.

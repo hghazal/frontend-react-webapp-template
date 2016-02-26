@@ -1,4 +1,5 @@
 FROM node:5.7
+# FROM us.gcr.io/roller-io/roller-app:latest
 
 RUN apt-get update && \
     apt-get install -y nginx && \

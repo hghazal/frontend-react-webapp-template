@@ -9,6 +9,7 @@ import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux'
 
 import Html from '../helpers/html';
+import { rollerAscii } from '../helpers/roller-ascii';
 import createHistory from 'react-router/lib/createMemoryHistory';
 
 import configureStore from '../store/configure-store'
@@ -82,7 +83,7 @@ app.use((req, res) => {
 
       global.navigator = {userAgent: req.headers['user-agent']};
 
-      res.send('<!doctype html>\n' +
+      res.send('<!doctype html>\n' + rollerAscii +
         ReactDOM.renderToString(<Html assets={webpackIsomorphicTools.assets()} component={component} store={store}/>));
     } else {
       res.status(404).send('Not found');

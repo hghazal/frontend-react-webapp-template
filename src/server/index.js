@@ -3,7 +3,11 @@
 require('./server.babel'); // babel registration (runtime transpilation for node)
 const config = require('../../config').default;
 
-if (config.globals.__DEV__) {
+
+// assign the global variables from the config file.
+Object.assign(global, config.globals)
+
+if (__DEV__) {
   if (!require('piping')({
     hook: true,
     ignore: /(\/\.|~$|\.json|\.scss$)/i,

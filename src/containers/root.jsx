@@ -3,6 +3,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as CounterActions from '../actions'
 
+require('../../assets/styles/onboarding_spa.scss');
+
+const logoImage = require('../../assets/images/logo.png');
+
 function mapStateToProps(state) {
   return {
     counter: state.counter
@@ -18,6 +22,7 @@ class Root extends React.Component {
     return (
       <div>
         <h1>Hello World ;-)</h1>
+        <img src={logoImage}/>
       </div>
     )
   }

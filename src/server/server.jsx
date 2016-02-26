@@ -8,23 +8,21 @@ import ReactDOM from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux'
 
+import createHistory from 'react-router/lib/createMemoryHistory';
+import favicon from 'serve-favicon';
+
+
 import Html from '../helpers/html';
 import { rollerAscii } from '../helpers/roller-ascii';
-import createHistory from 'react-router/lib/createMemoryHistory';
-
 import configureStore from '../store/configure-store'
-import favicon from 'serve-favicon';
 import config from '../../config';
 import getRoutes from '../routes';
 import DevTools from '../containers/dev-tools/dev-tools';
 
-// assign the global variables from the config file.
-Object.assign(global, config.globals)
-
 const paths = config.utilsPaths
 const app = new express();
 
-app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '..', '..', 'assets', 'favicon.ico')));
 app.use(compression());
 
 if (__PROD__) {

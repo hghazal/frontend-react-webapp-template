@@ -17,16 +17,16 @@ debug('Create base webpack configuration.')
 const webpackBaseConfig = {
   context: config.pathBase,
   entry: [
-    paths.src('client')
+    paths.src('client'),
   ],
   output: {
     // file name pattern for chunk scripts
 		chunkFilename: '[name].[hash].js',
     // file name pattern for entry scripts
     filename: path.join('js', '[name].[hash].js'),
-    // filesystem path for static files
+    // filesystem path for assets files
     path: paths.dist(),
-    // webserver path for static files
+    // webserver path for assets files
     publicPath: '/assets/'
   },
   module: {
@@ -74,15 +74,8 @@ const webpackBaseConfig = {
         test: /\.scss$/
       },
       {
-        loader: 'file?context=' + paths.base('static') + '&hash=sha512&digest=hex&name=[path][name].[ext]',
+        loader: 'file?context=' + paths.base('assets') + '&hash=sha512&digest=hex&name=fonts/[name].[ext]',
         test:  /\.(woff|woff2|ttf|eot|svg)$/i
-      },
-      {
-        loaders: [
-            'file?context=' + paths.base('static') + '&hash=sha512&digest=hex&name=[path][name]-[hash].[ext]',
-            'image-webpack?bypassOnDebug&optimizationLevel=3&interlaced=false'
-        ],
-        test: /\.(jpe?g|png|gif)$/i
       },
       {
         loader: 'url-loader?limit=10240',
@@ -97,7 +90,7 @@ const webpackBaseConfig = {
       config.pathBase,
       paths.src(),
       // path.resolve(config.pathBase, 'node_modules'),
-      // path.resolve(config.pathBase, 'static')
+      // path.resolve(config.pathBase, 'assets')
     ],
     extensions: ['', '.js', '.jsx']
   }
@@ -121,7 +114,8 @@ webpackBaseConfig.plugins = [
   new webpack.DefinePlugin(config.globals),
   new webpack.optimize.DedupePlugin(),
   new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.NoErrorsPlugin()
+  new webpack.NoErrorsPlugin(),
+  new ExtractTextPlugin('css/[name].css', {allChunks: true}),
 ];
 
 if (__DEV__) {

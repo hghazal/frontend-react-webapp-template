@@ -12,12 +12,12 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import favicon from 'serve-favicon';
 
 
-import Html from '../helpers/html';
-import { rollerAscii } from '../helpers/roller-ascii';
-import configureStore from '../store/configure-store'
-import config from '../../config';
-import getRoutes from '../routes';
-import DevTools from '../containers/dev-tools/dev-tools';
+import config from 'config';
+import Html from 'src/helpers/html';
+import { rollerAscii } from 'src/helpers/roller-ascii';
+import configureStore from 'src/store/configure-store'
+import getRoutes from 'src/routes';
+import DevTools from 'src/containers/dev-tools/dev-tools';
 
 const paths = config.utilsPaths
 const app = new express();

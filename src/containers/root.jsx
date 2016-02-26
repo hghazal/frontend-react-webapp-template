@@ -1,9 +1,9 @@
 import React from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as CounterActions from '../actions'
+import * as CounterActions from 'src/actions'
 
-require('../../assets/styles/onboarding_spa.scss');
+require('../../assets/styles/main.scss');
 
 const logoImage = require('../../assets/images/logo.png');
 
@@ -21,7 +21,8 @@ class Root extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello World ;-)</h1>
+        
+        <h1>Roller</h1>
         <img src={logoImage}/>
       </div>
     )

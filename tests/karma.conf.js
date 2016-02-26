@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 module.exports = function(config) {
   config.set({
@@ -45,7 +46,7 @@ module.exports = function(config) {
           { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: { limit: 10240 } },
           { test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel'] },
           { test: /\.json$/, loader: 'json-loader' },
-          { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
+          { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') },
         ],
       },
       resolve: {
@@ -59,6 +60,7 @@ module.exports = function(config) {
       plugins: [
         new webpack.IgnorePlugin(/\.json$/),
         new webpack.NoErrorsPlugin(),
+        new ExtractTextPlugin('css/[name].css', {allChunks: true}),
         new webpack.DefinePlugin({
           __DEV__: true,
           __DEVTOOLS__: false,

@@ -5,9 +5,9 @@ const config = require('../../config').default;
 
 
 // assign the global variables from the config file.
-Object.assign(global, config.globals)
+Object.assign(global, config.globals);
 
-if (__DEV__) {
+if (global.__DEV__) {
   if (!require('piping')({
     hook: true,
     ignore: /(\/\.|~$|\.json|\.scss$)/i,

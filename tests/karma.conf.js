@@ -60,7 +60,7 @@ module.exports = function(config) {
       plugins: [
         new webpack.IgnorePlugin(/\.json$/),
         new webpack.NoErrorsPlugin(),
-        new ExtractTextPlugin('css/[name].css', {allChunks: true}),
+        new ExtractTextPlugin('css/[name].css', { allChunks: true }),
         new webpack.DefinePlugin({
           __DEV__: true,
           __DEVTOOLS__: false,

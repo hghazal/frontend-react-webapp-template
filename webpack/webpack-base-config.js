@@ -75,7 +75,7 @@ const webpackBaseConfig = {
       },
       {
         loader: 'file?context=' + paths.base('assets') + '&hash=sha512&digest=hex&name=fonts/[name].[ext]',
-        test:  /\.(woff|woff2|ttf|eot|svg)$/i
+        test:  /\.(woff|woff2|ttf|eot|svg)((\?|#).*)?$/i
       },
       {
         loader: 'url-loader?limit=10240&name=images/[name].[hash].[ext]',

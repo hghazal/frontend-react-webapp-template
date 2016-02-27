@@ -1,0 +1,301 @@
+@font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-thin.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-thin.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-thin.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-thin.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-thin.svg#abezehthin') format('svg');
+      font-weight: 100;
+      font-style: normal;
+
+  }
+
+@font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-thinitalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-thinitalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-thinitalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-thinitalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-thinitalic.svg#abezehlightitalic') format('svg');
+      font-weight: 100;
+      font-style: italic;
+
+  }
+
+@font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-extralight.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-extralight.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-extralight.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-extralight.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-extralight.svg#abezehlight') format('svg');
+      font-weight: 200;
+      font-style: normal;
+
+  }
+
+@font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-extralightitalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-extralightitalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-extralightitalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-extralightitalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-extralightitalic.svg#abezehlightitalic') format('svg');
+      font-weight: 200;
+      font-style: italic;
+
+  }
+
+
+@font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-light.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-light.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-light.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-light.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-light.svg#abezehlight') format('svg');
+      font-weight: 300;
+      font-style: normal;
+
+  }
+
+@font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-lightitalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-lightitalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-lightitalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-lightitalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-lightitalic.svg#abezehlightitalic') format('svg');
+      font-weight: 300;
+      font-style: italic;
+
+  }
+
+@font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-regular.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-regular.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-regular.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-regular.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-regular.svg#abezeh') format('svg');
+      font-weight: 400;
+      font-style: normal;
+
+  }
+
+
+  @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-regularitalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-regularitalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-regularitalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-regularitalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-regularitalic.svg#abezehitalic') format('svg');
+      font-weight: 400;
+      font-style: italic;
+
+  }
+
+  @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-medium.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-medium.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-medium.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-medium.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-medium.svg#abezehmedium') format('svg');
+      font-weight: 500;
+      font-style: normal;
+
+  }
+
+
+  @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-mediumitalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-mediumitalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-mediumitalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-mediumitalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-mediumitalic.svg#abezehmediumitalic') format('svg');
+      font-weight: 500;
+      font-style: italic;
+
+  }
+
+    @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-semibold.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-semibold.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-semibold.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-semibold.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-semibold.svg#abezehsemibold') format('svg');
+      font-weight: 600;
+      font-style: normal;
+
+  }
+
+
+  @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-semibolditalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-semibolditalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-semibolditalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-semibolditalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-semibolditalic.svg#abezehsemibolditalic') format('svg');
+      font-weight: 600;
+      font-style: italic;
+
+  }
+
+
+    @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-bold.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-bold.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-bold.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-bold.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-bold.svg#abezehbold') format('svg');
+      font-weight: 700;
+      font-style: normal;
+
+  }
+
+
+  @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-bolditalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-bolditalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-bolditalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-bolditalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-bolditalic.svg#abezehmediumitalic') format('svg');
+      font-weight: 700;
+      font-style: italic;
+
+  }
+
+     @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-extrabold.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-extrabold.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-extrabold.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-extrabold.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-extrabold.svg#abezehextrabold') format('svg');
+      font-weight: 800;
+      font-style: normal;
+
+  }
+
+
+  @font-face {
+      font-family: 'ABeZeh';
+      src: url('#{$fonts-abezeh-path}/abezeh-extrabolditalic.eot');
+      src: url('#{$fonts-abezeh-path}/abezeh-extrabolditalic.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezeh-extrabolditalic.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezeh-extrabolditalic.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezeh-extrabolditalic.svg#abezehextrabolditalic') format('svg');
+      font-weight: 800;
+      font-style: italic;
+
+  }
+
+/*   SLABs */
+
+
+ @font-face {
+      font-family: 'ABeZehSlab';
+      src: url('#{$fonts-abezeh-path}/abezehslab-thin.eot');
+      src: url('#{$fonts-abezeh-path}/abezehslab-thin.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezehslab-thin.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezehslab-thin.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezehslab-thin.svg#abezehslabthin') format('svg');
+      font-weight: 100;
+      font-style: normal;
+
+  }
+
+
+
+@font-face {
+      font-family: 'ABeZehSlab';
+      src: url('#{$fonts-abezeh-path}/abezehslab-extralight.eot');
+      src: url('#{$fonts-abezeh-path}/abezehslab-extralight.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezehslab-extralight.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezehslab-extralight.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezehslab-extralight.svg#abezehslablight') format('svg');
+      font-weight: 200;
+      font-style: normal;
+
+  }
+
+
+
+
+@font-face {
+      font-family: 'ABeZehSlab';
+      src: url('#{$fonts-abezeh-path}/abezehslab-light.eot');
+      src: url('#{$fonts-abezeh-path}/abezehslab-light.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezehslab-light.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezehslab-light.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezehslab-light.svg#abezehslablight') format('svg');
+      font-weight: 300;
+      font-style: normal;
+
+  }
+
+
+
+@font-face {
+      font-family: 'ABeZehSlab';
+      src: url('#{$fonts-abezeh-path}/abezehslab-regular.eot');
+      src: url('#{$fonts-abezeh-path}/abezehslab-regular.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezehslab-regular.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezehslab-regular.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezehslab-regular.svg#abezehslab') format('svg');
+      font-weight: 400;
+      font-style: normal;
+
+  }
+
+
+
+
+  @font-face {
+      font-family: 'ABeZehSlab';
+      src: url('#{$fonts-abezeh-path}/abezehslab-medium.eot');
+      src: url('#{$fonts-abezeh-path}/abezehslab-medium.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezehslab-medium.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezehslab-medium.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezehslab-medium.svg#abezehslabmedium') format('svg');
+      font-weight: 500;
+      font-style: normal;
+
+  }
+
+
+
+
+    @font-face {
+      font-family: 'ABeZehSlab';
+      src: url('#{$fonts-abezeh-path}/abezehslab-bold.eot');
+      src: url('#{$fonts-abezeh-path}/abezehslab-bold.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezehslab-bold.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezehslab-bold.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezehslab-bold.svg#abezehslabbold') format('svg');
+      font-weight: 700;
+      font-style: normal;
+
+  }
+
+
+
+
+     @font-face {
+      font-family: 'ABeZehSlab';
+      src: url('#{$fonts-abezeh-path}/abezehslab-extrabold.eot');
+      src: url('#{$fonts-abezeh-path}/abezehslab-extrabold.eot?#iefix') format('embedded-opentype'),
+           url('#{$fonts-abezeh-path}/abezehslab-extrabold.woff') format('woff'),
+           url('#{$fonts-abezeh-path}/abezehslab-extrabold.ttf') format('truetype'),
+           url('#{$fonts-abezeh-path}/abezehslab-extrabold.svg#abezehslabextrabold') format('svg');
+      font-weight: 800;
+      font-style: normal;
+
+  }

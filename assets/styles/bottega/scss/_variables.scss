@@ -1,0 +1,35 @@
+@import 'color_variables';
+
+$container-width: 996px !default;
+$grid-gutter:     16px !default;
+
+
+
+// Brand colors
+$brand-blue:          $clr-cyan-500 !default;
+
+$brand-color: $brand-blue !default;
+
+// Font stack
+$fonts-icon-line-height-base: 1.35 !default;
+
+
+$fonts-fa-path:        "../fonts/font-awesome" !default; // "//netdna.bootstrapcdn.com/font-awesome/4.5.0/fonts" !default; // for referencing Bootstrap CDN font files directly
+$fonts-fa-version:          "4.5.0" !default;
+$fonts-fa-line-height: $fonts-icon-line-height-base !default;
+
+
+$fonts-octicons-path: "../fonts/octicons" !default;
+$fonts-octicons-version:   "5d0e81ce8a37c14fb660d4568efbd41d1fae7e85";
+$fonts-octicon-line-height: $fonts-icon-line-height-base !default;
+
+$fonts-material-path: "../fonts/material-icons" !default;
+$fonts-material-version: "3.2.1" !default;
+$fonts-material-line-height: $fonts-icon-line-height-base !default;
+
+$fonts-abezeh-path: "../fonts/abezeh" !default;
+$body-font: ABeZeh, Roboto, Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+
+// The base body size
+$body-font-size: 15px !default;

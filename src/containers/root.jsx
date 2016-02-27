@@ -20,10 +20,8 @@ function mapDispatchToProps(dispatch) {
 class Root extends React.Component {
   render() {
     return (
-      <div>
-        
+      <div className="container">
         <h1>Roller</h1>
-        <img src={logoImage}/>
       </div>
     )
   }

@@ -1,0 +1,25 @@
+/*
+ * Bottega
+ * http://bottega.roller.io
+ *
+ * Released under MIT license. Copyright 2015 Roller, Inc.
+ */
+
+// Bottega master file
+//
+// Imports all Bottega files in their intended order for easy mass-inclusion.
+// Should you need specific files, you can easily use separate `@import`s.
+
+// Global requirements
+@import "variables";
+$font-family-sans-serif: $body-font;
+
+// set bootstrap's  font-icon-path
+$icon-font-path: '//netdna.bootstrapcdn.com/bootstrap/3.0.0/fonts/';
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "mixins";
+
+// Base
+@import "normalize";
+@import "fonts";

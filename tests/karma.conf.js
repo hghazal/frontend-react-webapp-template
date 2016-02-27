@@ -43,7 +43,8 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: { limit: 10240 } },
+          { test: /\.(woff|woff2|ttf|eot|svg)((\?|#).*)?$/i, loader: 'url', query: { limit: 10240 } },
+          { test: /\.(jpe?g|png|gif|svg)((\?|#).*)?$/i, loader: 'url', query: { limit: 10240 } },
           { test: /\.(js|jsx)$/, exclude: /node_modules/, loaders: ['babel'] },
           { test: /\.json$/, loader: 'json-loader' },
           { test: /\.scss$/, loader: ExtractTextPlugin.extract('css!sass') },

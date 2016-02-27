@@ -79,7 +79,7 @@ const webpackBaseConfig = {
       },
       {
         loader: 'url-loader?limit=10240&name=images/[name].[hash].[ext]',
-        test: /\.(jpe?g|png|gif|svg)$/i
+        test: /\.(jpe?g|png|gif|svg)((\?|#).*)?$/i
       }
     ]
   },

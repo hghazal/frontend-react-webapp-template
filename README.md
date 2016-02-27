@@ -1,5 +1,5 @@
 <h1>Roller's Frontend Template</h1>
-<a  href="https://circleci.com/gh/hghazal/app.roller.io/tree/master"><img src="https://circleci.com/gh/hghazal/app.roller.io.svg?style=shield"></a>
+<a target="_blank" href="https://circleci.com/gh/hghazal/app.roller.io/tree/master"><img src="https://circleci.com/gh/hghazal/app.roller.io.svg?style=shield"></a>
 ***
 
 ## Stack:

@@ -1,9 +1,9 @@
 
-$fonts-fa-path:        "bottega/fonts/font-awesome" !default; // "//netdna.bootstrapcdn.com/font-awesome/4.5.0/fonts" !default; // for referencing Bootstrap CDN font files directly
-$fonts-fa-version:          "4.5.0" !default;
+$fonts-fa-path: "bottega/fonts/font-awesome" !default; // "//netdna.bootstrapcdn.com/font-awesome/4.5.0/fonts" !default; // for referencing Bootstrap CDN font files directly
+$fonts-fa-version: "4.5.0" !default;
 
 $fonts-octicons-path: "bottega/fonts/octicons" !default;
-$fonts-octicons-version:   "5d0e81ce8a37c14fb660d4568efbd41d1fae7e85";
+$fonts-octicons-version: "5d0e81ce8a37c14fb660d4568efbd41d1fae7e85";
 
 $fonts-material-path: "bottega/fonts/material-icons" !default;
 $fonts-material-version: "3.2.1" !default;
@@ -11,8 +11,10 @@ $fonts-abezeh-path: "bottega/fonts/abezeh" !default;
 
 @import "./bottega/scss/bottega.scss";
 
-
 body {
-  background-color: $clr-indigo-500;
-  color: #fff;
+  color: $clr-grey-800;
+}
+
+.extra-large {
+  font-size: 75px;
 }

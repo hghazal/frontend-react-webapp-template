@@ -30,6 +30,14 @@ $fonts-material-line-height: $fonts-icon-line-height-base !default;
 $fonts-abezeh-path: "../fonts/abezeh" !default;
 $body-font: ABeZeh, Roboto, Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
+// Bootstrap Overrides
 
 // The base body size
 $body-font-size: 15px !default;
+$font-size-base: 15px;
+//** Global textual link color.
+$link-color:            $clr-cyan-500;
+//** Link hover color set via `darken()` function.
+$link-hover-color:      $clr-cyan-300;
+//** Link hover decoration.
+$link-hover-decoration: underline !default;

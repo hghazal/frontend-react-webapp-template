@@ -5,13 +5,15 @@ import {IndexRoute, Route} from 'react-router';
 import {
   Root,
   Home,
+  Demo,
 } from '../src/containers';
 
 
 export default (store) => {
   return (
-    <Route path="/" component={Root}>
-      <IndexRoute component={Home} />
+    <Route name="root" path="/">
+      <IndexRoute component={ Root } />
+      <Route path="demo" name="demo" component={ Demo } />
     </Route>
   );
 }

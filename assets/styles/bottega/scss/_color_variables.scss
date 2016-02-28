@@ -914,3 +914,15 @@ $clr-list-all: (
   "black":       $clr-black-list,
   "white":       $clr-white-list
 );
+
+@each $clr, $clr-list in $clr-list-all {
+  @each $i, $val in $clr-list {
+    $ext: -#{$i};
+    @if $i == 'base' {
+      $ext: "";
+    }
+    .txt-clr-#{$clr}#{$ext} {
+      color: $val;
+    }
+  }
+}

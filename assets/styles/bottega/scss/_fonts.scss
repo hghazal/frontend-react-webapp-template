@@ -2,6 +2,7 @@
 @import "fonts/font-material";
 @import "fonts/font-octicons";
 @import "fonts/font-abezeh";
+@import url(https://fonts.googleapis.com/css?family=Grand+Hotel);
 
 
 .bt-icon {
@@ -32,4 +33,8 @@
 .bt-icon.fa {
   font-family: 'FontAwesome';
   line-height: $fonts-fa-line-height;
+}
+
+.cursive {
+  font-family: "Grand Hotel"
 }
